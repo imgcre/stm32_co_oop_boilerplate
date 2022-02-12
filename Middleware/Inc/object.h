@@ -5,7 +5,7 @@
 
 //usage: invoke(Client, client, getVal, 5)
 #define V_FUNC_PTR(clazz, object, func) ((clazz##_VTable*)((Object*)object)->vTable)->func
-#define INVOKE(clazz, object, func, ...)  V_FUNC_PTR(clazz, object, func)((clazz*)object, ##__VA_ARGS__)
+#define INVOKE(clazz, object, func, ...)  V_FUNC_PTR(clazz, object, func)((void*)object, ##__VA_ARGS__)
 
 #define BASE_V(baseClazz, object, func, ...) ((V_TABLE_NAME(baseClazz)*)init_##baseClazz##_vtable())->func(object, ##__VA_ARGS__)
 

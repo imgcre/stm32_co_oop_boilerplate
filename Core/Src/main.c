@@ -115,7 +115,9 @@ int main(void)
 //  s_task_init_system();
 //  s_task_create(g_stack_main, sizeof(g_stack_main), main_task, 0);
 //  s_task_join(__await__, g_stack_main);
-  INST_MAKE(App, &app);
+  s_task_init_system();
+  INST_ASYNC_MAKE(App, &app);
+  INVOKE_ASYNC(App, &app, join);
   printf("all done.");
   while (1)
   {

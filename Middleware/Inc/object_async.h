@@ -20,7 +20,7 @@
 		
 #define CTOR_ASYNC_EXPORT(clazz, ...) void clazz##_async_make(__async__, clazz* self, ##__VA_ARGS__)
 #define BASE_ASYNC_CTOR(baseClazz, ...) baseClazz##_async_make(__await__, (baseClazz*)self, ##__VA_ARGS__)
-#define INVOKE_ASYNC(clazz, object, func, ...)  ((clazz##_VTable*)((Object*)object)->vTable)->func(__await__, (clazz*)object, ##__VA_ARGS__)
+#define INVOKE_ASYNC(clazz, object, func, ...)  ((clazz##_VTable*)((Object*)object)->vTable)->func(__await__, (void*)object, ##__VA_ARGS__)
 #define V_FUNC_ASYNC_IMPL(clazz, name, r, ...) static r clazz##_##name(__async__, clazz* self, ##__VA_ARGS__)
 #define V_FUNC_ASYNC_OVERRIDE(clazz, name, r, ...) static r clazz##_ovrd_##name(__async__, clazz* self, ##__VA_ARGS__)
 #define V_FUNC_ASYNC_DEF(clazz, name, r, ...) r (*name)(__async__, clazz* self, ##__VA_ARGS__)

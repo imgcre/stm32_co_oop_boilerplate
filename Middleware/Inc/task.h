@@ -13,6 +13,7 @@ END_CLS_DEF(Task)
 	V_FUNC_ASYNC_DEF(Task, run, void); \
 	V_FUNC_DEF(Task, getStackPtr, void*); \
 	V_FUNC_DEF(Task, getStackSize, size_t); \
+	V_FUNC_DEF(Task, getStackUsage, size_t); \
 	V_FUNC_ASYNC_DEF(Task, join, void);
 
 CTOR_ASYNC_EXPORT(Task);
