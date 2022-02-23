@@ -103,8 +103,9 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   cls_init(); //初始化OOP中间件
-//  HAL_UARTEx_ReceiveToIdle_DMA(&huart1, g_uart1_buf, sizeof(g_uart1_buf));
-//  __HAL_DMA_DISABLE_IT(&hdma_usart1_rx, DMA_IT_HT);
+  HAL_UARTEx_ReceiveToIdle_DMA(&huart1, g_uart1_buf, sizeof(g_uart1_buf));
+  __HAL_DMA_DISABLE_IT(&hdma_usart1_rx, DMA_IT_HT);
+
 //  HAL_UART_Receive_IT(&huart1, g_uart1_buf, 1);
 //  HAL_UART_Receive_DMA(&huart1, g_uart1_buf, 1);
   /* USER CODE END 2 */
@@ -257,10 +258,13 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size) {
 
 	if(huart == &huart1) {
 		int len = Size - prev;
+		//HAL_UART_Transmit(&huart1, g_uart1_buf, Size, HAL_MAX_DELAY);
+		for(int i = 0; i < len; i++) {
+			INVOKE(AtClient, &app.atClient, recv, g_uart1_buf[prev + i]);
+		}
+		printf("s:%d\r\n", len);
 		prev = Size;
 		prev %= sizeof(g_uart1_buf);
-		//HAL_UART_Transmit(&huart1, g_uart1_buf, Size, HAL_MAX_DELAY);
-		printf("s:%d\r\n", len);
 	}
 }
 

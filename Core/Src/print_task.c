@@ -9,7 +9,7 @@ CTOR_ASYNC_IMPL(PrintTask, int delay, const char* msg) {
 
 V_FUNC_ASYNC_OVERRIDE(PrintTask, run, void) {
 	while(1) {
-		printf("[%d]%s\n", self->count, self->msg);
+		//printf("[%d]%s\n", self->count, self->msg);
 		self->count++;
 		s_task_msleep(__await__, self->delay);
 	}

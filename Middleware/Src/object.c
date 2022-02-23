@@ -5,11 +5,11 @@ static const V_INIT_FUNC f_begin __attribute__((used)) __attribute__((section("v
 static const V_INIT_FUNC f_end __attribute__((used)) __attribute__((section("vinit.1.end"))) = 0;
 
 CTOR_IMPL(Object) {
-	printf("object ctor called\n");
+	//printf("object ctor called\n");
 }
 
 V_FUNC_IMPL(Object, test, void) {
-	printf("test name: %s\n", INVOKE(Object, self, toString));
+	//printf("test name: %s\n", INVOKE(Object, self, toString));
 }
 
 V_FUNC_IMPL(Object, toString, const char*) {
@@ -28,7 +28,12 @@ void* init_Object_vtable() {
 void cls_init() {
 	V_INIT_FUNC* f;
 	for(f = (V_INIT_FUNC*)&f_begin; f != &f_end; f++) {
-		printf("addr: %p\n", f);
+		//printf("addr: %p\n", f);
 		(*f)();
 	}
+}
+
+void object_abstract_stub() {
+	printf("WARN abstract func called\n");
+	while(1){}
 }
