@@ -15,14 +15,14 @@
 
 CLS_DEF(App, Task)
 //	PrintTask task1, task2;
-	AtFsmResp fsmResp;
-	AtFsmRespLine fsmTestLine;
-	FsmExtractly fsmTestLineKeyword;
-	RespLineParamItem testLineItems[1];
-	FsmInt fsmTestLineData;
-	AtRespItem respItems[1];
-	NaviUrcRegItem naviUrcRegItem;
-	RunarUrcRegItem runarUrcRegItem;
+//	AtFsmResp fsmResp;
+//	AtFsmRespLine fsmTestLine;
+//	FsmExtractly fsmTestLineKeyword;
+//	RespLineParamItem testLineItems[1];
+//	FsmInt fsmTestLineData;
+//	AtRespItem respItems[1];
+//	NaviUrcRegItem naviUrcRegItem;
+//	RunarUrcRegItem runarUrcRegItem;
 	AtClient atClient;
 
 	int stack[1024 / sizeof(int)];

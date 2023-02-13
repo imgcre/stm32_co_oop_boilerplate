@@ -63,8 +63,8 @@ V_FUNC_ASYNC_OVERRIDE(App, run, void) {
 //	};
 //
 //	INST_CREATE(AtFsmResp, resp, litems, A_SIZE(litems), NULL);
-	INST_CREATE(AtFsmResp, resp, NULL, 0, NULL);
-	INVOKE_ASYNC(AtClient, &self->atClient, request, &resp, "AT+HELLO\r\n");
+//	INST_CREATE(AtFsmResp, resp, NULL, 0, NULL);
+	INVOKE_ASYNC(AtClient, &self->atClient, request, NULL, "AT+HELLO\r\n");
 //	for(int i = 0; i < sizeof(test_str) - 1; i++) {
 //		print_feed(test_str[i]);
 //		INVOKE(AtClient, &self->atClient, _recv, test_str[i]);

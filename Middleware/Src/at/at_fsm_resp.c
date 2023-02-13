@@ -76,6 +76,8 @@ V_FUNC_OVERRIDE_X(reset, void) {
 }
 
 V_FUNC_OVERRIDE_X(isTerminated, bool) {
+	return true;
+
 	INST_CREATE(AtRespIterTer, it, self->terminators, A_SIZE(self->terminators));
 	Fsm* curTer = INVOKE(AtRespIterTer, &it, next);
 	while(curTer != NULL) {
